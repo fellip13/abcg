@@ -83,6 +83,4 @@ void Ball::terminateGL() {
 void Ball::update(float deltaTime, int &directionX, int &directionY) {
   setTranslation(glm::vec2((m_translation.x + deltaTime * directionX),
                            (m_translation.y + deltaTime * directionY)));
-  //  ball.m_translation.y += ball.m_velocity.y * deltaTime * directionY;
-  //  ball.m_translation.x += ball.m_velocity.x * deltaTime * directionX;
 }

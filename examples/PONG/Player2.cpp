@@ -20,7 +20,7 @@ void Player2::paintGL(const GameData &gameData) {
   abcg::glUniform2fv(m_translationLoc, 1, &m_translation.x);
 
   abcg::glUniform4fv(m_colorLoc, 1, &m_color.r);
-  abcg::glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_INT, nullptr);
+  abcg::glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
   abcg::glBindVertexArray(0);
 
@@ -35,18 +35,18 @@ void Player2::update(const GameData &gameData, float ball_Y, bool isPlayer) {
   if (isPlayer) {
     if (gameData.m_input[static_cast<size_t>(Input::Down2)] &&
         m_translation.y > -0.87f) {
-      m_translation.y += -0.0004f;
+      m_translation.y += -0.032f;
     }
     if (gameData.m_input[static_cast<size_t>(Input::Up2)] &&
         m_translation.y < 0.63f) {
-      m_translation.y += 0.0004f;
+      m_translation.y += 0.032f;
     }
   } else {
     if (m_translation.y > ball_Y && m_translation.y > -0.87f) {
-      m_translation.y += -0.00032f;
+      m_translation.y += -0.0142f;
     }
     if (m_translation.y < ball_Y && m_translation.y < 0.63f) {
-      m_translation.y += 0.00032f;
+      m_translation.y += 0.0142f;
     }
   }
 }
