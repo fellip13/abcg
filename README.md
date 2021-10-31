@@ -1,14 +1,31 @@
-ABCg
+Projeto 1 - Computação Gráfica - PONG
 ======
-
-Development framework accompanying the course MCTA008-17 Computer Graphics at [UFABC](https://www.ufabc.edu.br/).
-
+### Autor
 ----
+Fellip da Silva Ribeiro - RA: 11201921507
+Verônica Agatha Gonçalves Isobe - RA: 11201920292
 
-### Credits
+### Descrição
+A aplicação consiste no clássico jogo PONG. Duas barras se movimentam pelo eixo Y (uma ao lado esquerdo da tela e outro do lado direito) rebatendo uma bola de uma lado para o outro. Quando uma barrinha não conseguir rebater a bolinha, o outro jogador ganhara um ponto e aquele que fizer 5 pontos primeiro vence.
 
-Developed by Harlen Batagelo.
+### Modos de jogo
+O jogo possui 3 modos, apresentados no menu inicial:
+- O modo "Player 1 - Right", onde a barrinha da esquerda se torna uma AI. 
+- O modo "Player 2 - Left", onde a barrinha da direita se torna uma AI. 
+- O modo "Two Playes", onde ambas as barrinhas são controladas pelos jogadores.
 
-### License
+### Controles
+Tecla ESC - Encerra o programa
+Seta para cima - movimenta a barrinha direita para cima
+Seta para baixo -  movimenta a barrinha direita para baixo.
+Tecla W - movimenta a barrinha esquerda para cima.
+Tecla S - movimenta a barrinha esquerda para baixo.
 
-ABCg is licensed under the MIT License. See [LICENSE](https://github.com/hbatagelo/abcg/blob/main/LICENSE) for more information.
+As controles são validas para todos os modos, com a AI assumindo o controle de uma das barrinhas no caso dos modos para um jogador.
+As teclas para controle dos players estarão sempre visiveis no topo da janela durante o jogo.
+
+### Código Fonte
+O código fonte está dentro da pasta Examples, dentro do diretório ABC, como "PONG".
+
+### Link do Github Pages
+https://fellip13.github.io/abcg/
