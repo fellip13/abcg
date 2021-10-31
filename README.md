@@ -24,8 +24,8 @@ Tecla S - movimenta a barrinha esquerda para baixo.
 As controles são validas para todos os modos, com a AI assumindo o controle de uma das barrinhas no caso dos modos para um jogador.
 As teclas para controle dos players estarão sempre visiveis no topo da janela durante o jogo.
 
-**Tecla** | **Ação**
------- | ------
+Tecla | Ação
+:------: | :------:
 ESC    | Encerra o programa
 ↑      | Movimenta a barrinha direita para cima
 ↓      | Movimenta a barrinha direita para baixo.
