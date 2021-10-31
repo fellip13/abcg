@@ -15,12 +15,6 @@ O jogo possui 3 modos, apresentados no menu inicial:
 - O modo "Two Playes", onde ambas as barrinhas são controladas pelos jogadores.
 
 ### Controles
-Tecla ESC - Encerra o programa
-Seta para cima - movimenta a barrinha direita para cima
-Seta para baixo -  movimenta a barrinha direita para baixo.
-Tecla W - movimenta a barrinha esquerda para cima.
-Tecla S - movimenta a barrinha esquerda para baixo.
-
 As controles são validas para todos os modos, com a AI assumindo o controle de uma das barrinhas no caso dos modos para um jogador.
 As teclas para controle dos players estarão sempre visiveis no topo da janela durante o jogo.
 
