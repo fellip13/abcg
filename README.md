@@ -24,13 +24,13 @@ Tecla S - movimenta a barrinha esquerda para baixo.
 As controles são validas para todos os modos, com a AI assumindo o controle de uma das barrinhas no caso dos modos para um jogador.
 As teclas para controle dos players estarão sempre visiveis no topo da janela durante o jogo.
 
-**Tecla**   | **Ação**
------------ | ------
-    ESC     | Encerra o programa
-     ↑      | Movimenta a barrinha direita para cima
-     ↓      | Movimenta a barrinha direita para baixo.
-     W      | Movimenta a barrinha esquerda para cima.
-     S      | Movimenta a barrinha esquerda para baixo.
+**Tecla** | **Ação**
+------ | ------
+ESC    | Encerra o programa
+↑      | Movimenta a barrinha direita para cima
+↓      | Movimenta a barrinha direita para baixo.
+W      | Movimenta a barrinha esquerda para cima.
+S      | Movimenta a barrinha esquerda para baixo.
 
 ### Código Fonte
 O código fonte está dentro da pasta Examples, dentro do diretório ABCg, como "PONG".
