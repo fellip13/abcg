@@ -3,7 +3,7 @@ Projeto 1 - Computação Gráfica - PONG
 # Autores
 ### Fellip da Silva Ribeiro - RA: 11201921507
 ### Verônica Agatha Gonçalves Isobe - RA: 11201920292
-
+------
 ### Descrição
 A aplicação consiste no clássico jogo PONG. Duas barras se movimentam pelo eixo Y (uma ao lado esquerdo da tela e outro do lado direito) rebatendo uma bola de uma lado para o outro. Quando uma barrinha não conseguir rebater a bolinha, o outro jogador ganhara um ponto e aquele que fizer 5 pontos primeiro vence.
 
