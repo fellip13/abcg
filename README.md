@@ -1,6 +1,6 @@
 Projeto 1 - Computação Gráfica - PONG
 ======
-### Autores
+## Autores
 ----
 - Fellip da Silva Ribeiro - RA: 11201921507
 - Verônica Agatha Gonçalves Isobe - RA: 11201920292
@@ -26,10 +26,6 @@ As teclas para controle dos players estarão sempre visiveis no topo da janela d
 
 ### Código Fonte
 O código fonte está dentro da pasta Examples, dentro do diretório ABCg, como "PONG".
-
-### Observação
-O compilador WebAssembly não compilou da forma esperada e não redenriza as barrinhas, não consegui corrigir o problema e fui orientado pelo professor a disponibilizar o WebAssembly e o PONG.exe para testes e deixar uma observação no relatório. 
-O PON.exe pode ser encontrado em:  abcg / build2 / bin / PONG / PONG.exe
 
 ### Link do Github Pages
 https://fellip13.github.io/PONG/
