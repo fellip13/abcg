@@ -25,7 +25,11 @@ As controles são validas para todos os modos, com a AI assumindo o controle de 
 As teclas para controle dos players estarão sempre visiveis no topo da janela durante o jogo.
 
 ### Código Fonte
-O código fonte está dentro da pasta Examples, dentro do diretório ABC, como "PONG".
+O código fonte está dentro da pasta Examples, dentro do diretório ABCg, como "PONG".
+
+### Observação
+O compilador WebAssembly não compilou da forma esperada e não redenriza as barrinhas, não consegui corrigir o problema e fui orientado pelo professor a disponibilizar o WebAssembly e o PONG.exe para testes e deixar uma observação no relatório. 
+O PON.exe pode ser encontrado em:  abcg / build2 / bin / PONG / PONG.exe
 
 ### Link do Github Pages
-https://fellip13.github.io/abcg/
+https://fellip13.github.io/PONG/
