@@ -1,7 +1,7 @@
 Projeto 1 - Computação Gráfica - PONG
 ======
 ------
-# Autores
+## Autores
 ### Fellip da Silva Ribeiro - RA: 11201921507
 ### Verônica Agatha Gonçalves Isobe - RA: 11201920292
 ------
