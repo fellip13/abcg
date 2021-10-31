@@ -1,5 +1,4 @@
 Projeto 1 - Computação Gráfica - PONG
-------
 ## Autores
 ------
 - Fellip da Silva Ribeiro - RA: 11201921507
