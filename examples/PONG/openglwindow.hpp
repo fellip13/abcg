@@ -30,12 +30,13 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   Player1 m_player1;
   Player2 m_player2;
   Ball m_ball;
-  bool isPlayer1 = true;
-  bool isPlayer2 = true;
-  int directionX = 1;  //-1 esquerda 1 direita
-  int directionY = 0;
-  int player1Score = 0;
-  int player2Score = 0;
+
+  bool isPlayer1 = true;  // If player 1 is an AI or not
+  bool isPlayer2 = true;  // If player 2 is an AI or not
+  int directionX = 1;     //-1 left 1 right
+  int directionY = 0;     //-1 down 1 up
+  int player1Score = 0;   // score Player 1
+  int player2Score = 0;   // score Player 2
 
   abcg::ElapsedTimer m_restartWaitTimer;
 

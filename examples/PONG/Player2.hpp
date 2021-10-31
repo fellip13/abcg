@@ -1,10 +1,10 @@
 #ifndef PLAYER2_HPP_
 #define PLAYER2_HPP_
 
+// Include libraries
 #include "abcg.hpp"
 #include "gamedata.hpp"
 
-// class Asteroids;
 class Ball;
 class OpenGLWindow;
 class Player1;

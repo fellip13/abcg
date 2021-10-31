@@ -1,3 +1,4 @@
+// include libraries
 #include "Player1.hpp"
 
 #include <glm/gtx/fast_trigonometry.hpp>
@@ -33,6 +34,7 @@ void Player1::terminateGL() {
 }
 void Player1::update(const GameData &gameData, float ball_Y, bool isPlayer) {
   if (isPlayer) {
+    // Gives control to the player
     if (gameData.m_input[static_cast<size_t>(Input::Down1)] &&
         m_translation.y > -0.87f) {
       m_translation.y += -0.032f;
@@ -42,6 +44,7 @@ void Player1::update(const GameData &gameData, float ball_Y, bool isPlayer) {
       m_translation.y += 0.032f;
     }
   } else {
+    // Gives control to the Ai
     if (m_translation.y > ball_Y && m_translation.y > -0.87f) {
       m_translation.y += -0.0142f;
     }

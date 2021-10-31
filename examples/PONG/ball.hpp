@@ -36,7 +36,6 @@ class Ball {
 
   float m_scale{0.025f};
   glm::vec2 m_translation{glm::vec2(0)};
-
   glm::vec2 m_velocity{glm::vec2(0)};
   glm::vec2 m_position{glm::vec2(0)};
 

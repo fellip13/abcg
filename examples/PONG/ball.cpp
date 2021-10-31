@@ -1,3 +1,4 @@
+// Include libraries
 #include "ball.hpp"
 
 #include <cppitertools/itertools.hpp>
@@ -80,6 +81,7 @@ void Ball::terminateGL() {
   glDeleteVertexArrays(1, &m_vao);
 }
 
+// Updating ball position based on time and direction
 void Ball::update(float deltaTime, int &directionX, int &directionY) {
   setTranslation(glm::vec2((m_translation.x + deltaTime * directionX),
                            (m_translation.y + deltaTime * directionY)));

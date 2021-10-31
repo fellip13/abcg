@@ -1,3 +1,4 @@
+// include libraries
 #include "openglwindow.hpp"
 
 #include <imgui.h>
@@ -17,8 +18,6 @@ void OpenGLWindow::handleEvent(SDL_Event &event) {
       m_gameData.m_input.set(static_cast<size_t>(Input::Down2));
     if (event.key.keysym.sym == SDLK_ESCAPE)
       m_gameData.m_input.set(static_cast<size_t>(Input::ESC));
-    if (event.key.keysym.sym == SDLK_m)
-      m_gameData.m_input.set(static_cast<size_t>(Input::Menu));
   }
   if (event.type == SDL_KEYUP) {
     if (event.key.keysym.sym == SDLK_UP)
@@ -31,8 +30,6 @@ void OpenGLWindow::handleEvent(SDL_Event &event) {
       m_gameData.m_input.reset(static_cast<size_t>(Input::Down2));
     if (event.key.keysym.sym == SDLK_ESCAPE)
       m_gameData.m_input.set(static_cast<size_t>(Input::ESC));
-    if (event.key.keysym.sym == SDLK_m)
-      m_gameData.m_input.set(static_cast<size_t>(Input::Menu));
   }
 }
 
@@ -57,6 +54,7 @@ void OpenGLWindow::initializeGL() {
 }
 
 void OpenGLWindow::initiate() {
+  // initiate the game in the menu state
   m_gameData.m_state = State::Menu;
   m_player1.initializeGL(m_objectsProgram);
   m_player2.initializeGL(m_objectsProgram);
@@ -66,6 +64,7 @@ void OpenGLWindow::initiate() {
 }
 
 void OpenGLWindow::restart() {
+  // initiate the game in the playing state
   m_gameData.m_state = State::Playing;
   m_player1.initializeGL(m_objectsProgram);
   m_player2.initializeGL(m_objectsProgram);
@@ -77,32 +76,26 @@ void OpenGLWindow::restart() {
 void OpenGLWindow::update() {
   const float deltaTime{static_cast<float>(getDeltaTime())};
 
+  // If ESC is pressed, terminate the game
   if (m_gameData.m_input[static_cast<size_t>(Input::ESC)]) {
     terminateGL();
     return;
   }
 
-  if (m_gameData.m_input[static_cast<size_t>(Input::Menu)]) {
-    m_player1.terminateGL();
-    m_player2.terminateGL();
-    m_ball.terminateGL();
-    initiate();
-    return;
-  }
-
-  // Wait 5 seconds before restarting
+  // Wait 5 seconds before restarting if player 1 won
   if (m_gameData.m_state == State::Player1Win &&
       m_restartWaitTimer.elapsed() > 5) {
     restart();
     return;
   }
+  // Wait 5 seconds before restarting if player 2 won
   if (m_gameData.m_state == State::Player2Win &&
       m_restartWaitTimer.elapsed() > 5) {
     restart();
     return;
   }
 
-  // Wait 2 seconds before restarting
+  // Wait 2 seconds before restarting after one of the players scored
   if ((m_gameData.m_state == State::ScoreP1 ||
        m_gameData.m_state == State::ScoreP2) &&
       m_restartWaitTimer.elapsed() > 2) {
@@ -110,6 +103,7 @@ void OpenGLWindow::update() {
     return;
   }
 
+  // Update the game if the state is playing
   if (m_gameData.m_state == State::Playing) {
     m_player1.update(m_gameData, m_ball.m_translation.y, isPlayer1);
     m_player2.update(m_gameData, m_ball.m_translation.y, isPlayer2);
@@ -133,6 +127,7 @@ void OpenGLWindow::paintGL() {
 void OpenGLWindow::paintUI() {
   abcg::OpenGLWindow::paintUI();
   {
+    // Header of the game, displayed when the state is playing
     if (m_gameData.m_state == State::Playing) {
       const auto size{ImVec2(600, 100)};
       const auto position{ImVec2((m_viewportHeight - size.x) / 2.0f, 0.8f)};
@@ -153,7 +148,9 @@ void OpenGLWindow::paintUI() {
           "____________________________________________________________________"
           "__________");
       ImGui::PushFont(m_font);
-    } else if (m_gameData.m_state == State::Player1Win) {
+    }
+    // Player 1 victory screen, displayed whe state is Player1Win
+    else if (m_gameData.m_state == State::Player1Win) {
       const auto size{ImVec2(300, 170)};
       const auto position{ImVec2((m_viewportWidth - size.x) / 2.0f,
                                  (m_viewportHeight - size.y) / 2.0f)};
@@ -166,7 +163,9 @@ void OpenGLWindow::paintUI() {
       ImGui::PushFont(m_font);
       ImGui::Text("Player 1");
       ImGui::Text("  Wins!");
-    } else if (m_gameData.m_state == State::Player2Win) {
+    }
+    // Player 2 victory screen, displayed whe state is Player2Win
+    else if (m_gameData.m_state == State::Player2Win) {
       const auto size{ImVec2(300, 170)};
       const auto position{ImVec2((m_viewportWidth - size.x) / 2.0f,
                                  (m_viewportHeight - size.y) / 2.0f)};
@@ -179,7 +178,9 @@ void OpenGLWindow::paintUI() {
       ImGui::PushFont(m_font);
       ImGui::Text("Player 2");
       ImGui::Text("  Wins!");
-    } else if (m_gameData.m_state == State::ScoreP1) {
+    }
+    // Player 1 score screen, displayed whe state is ScoreP1
+    else if (m_gameData.m_state == State::ScoreP1) {
       const auto size{ImVec2(300, 170)};
       const auto position{ImVec2((m_viewportWidth - size.x) / 2.0f,
                                  (m_viewportHeight - size.y) / 2.0f)};
@@ -192,7 +193,9 @@ void OpenGLWindow::paintUI() {
       ImGui::PushFont(m_font);
       ImGui::Text("Point for");
       ImGui::Text("Player 1");
-    } else if (m_gameData.m_state == State::ScoreP2) {
+    }
+    // Player 2 score screen, displayed whe state is ScoreP2
+    else if (m_gameData.m_state == State::ScoreP2) {
       const auto size{ImVec2(300, 170)};
       const auto position{ImVec2((m_viewportWidth - size.x) / 2.0f,
                                  (m_viewportHeight - size.y) / 2.0f)};
@@ -205,7 +208,9 @@ void OpenGLWindow::paintUI() {
       ImGui::PushFont(m_font);
       ImGui::Text("Point for");
       ImGui::Text("Player 2");
-    } else if (m_gameData.m_state == State::Menu) {
+    }
+    // Menu screen, displayed whe state is Menu
+    else if (m_gameData.m_state == State::Menu) {
       const auto size{ImVec2(500, 240)};
       const auto position{ImVec2((m_viewportWidth - size.x) / 2.0f,
                                  (m_viewportHeight - size.y) / 2.0f)};
@@ -234,6 +239,7 @@ void OpenGLWindow::paintUI() {
     ImGui::End();
   }
 }
+
 void OpenGLWindow::resizeGL(int width, int height) {
   m_viewportWidth = width;
   m_viewportHeight = height;
@@ -287,14 +293,21 @@ void OpenGLWindow::checkCollisions() {
       }
     }
   }
+  // Reflects Ball if it hits the top or bottom of the playing field
   if (ball_Y <= -0.99f) directionY = 1;
   if (ball_Y >= 0.67f) directionY = -1;
+
+  // Gives a point for player 2 if the ball hits the right side of the playing
+  // field
   if (ball_X >= 1.0f) {
     player2Score++;
     directionX = 0;
     directionY = 0;
     m_gameData.m_state = State::ScoreP2;
   }
+
+  // Gives a point for player 1 if the ball hits the left side of the playing
+  // field
   if (ball_X <= -1.0f) {
     player1Score++;
     directionX = 0;
@@ -304,11 +317,13 @@ void OpenGLWindow::checkCollisions() {
 }
 
 void OpenGLWindow::checkWinCondition() {
+  // Victory for Player 1
   if (player1Score == 5) {
     m_gameData.m_state = State::Player1Win;
     player1Score = 0;
     player2Score = 0;
   }
+  // Victory for Player 2
   if (player2Score == 5) {
     m_gameData.m_state = State::Player2Win;
     player1Score = 0;
