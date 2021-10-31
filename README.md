@@ -5,7 +5,7 @@ Projeto 1 - Computação Gráfica - PONG
 ### Verônica Agatha Gonçalves Isobe - RA: 11201920292
 ------
 ### Descrição
-A aplicação consiste no clássico jogo PONG. Duas barras se movimentam pelo eixo Y (uma ao lado esquerdo da tela e outro do lado direito) rebatendo uma bola de uma lado para o outro. Quando uma barrinha não conseguir rebater a bolinha, o outro jogador ganhara um ponto e aquele que fizer 5 pontos primeiro vence.
+A aplicação se trata de uma cópia do clássico jogo PONG. Duas barras se movimentam pelo eixo Y (uma de cada lado da tela) rebatendo uma bola de uma lado para o outro. Quando uma barrinha não conseguir rebater a bolinha, o outro jogador ganhara um ponto e aquele que fizer 5 pontos primeiro vence.
 
 ### Modos de jogo
 O jogo possui 3 modos, apresentados no menu inicial:
