@@ -14,7 +14,7 @@ O jogo possui 3 modos, apresentados no menu inicial:
 - O modo "Two Playes", onde ambas as barrinhas são controladas pelos jogadores.
 
 ### Controles
-As controles são validas para todos os modos, com a AI assumindo o controle de uma das barrinhas no caso dos modos para um jogador.
+As controles são validas para todos os modos, com a AI assumindo o controle de uma das barrinhas no caso dos modos para um jogador. <br />
 As teclas para controle dos players estarão sempre visiveis no topo da janela durante o jogo.
 
 Tecla | Ação
