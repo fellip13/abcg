@@ -1,0 +1,26 @@
+# ninja log v5
+16	227	6574115536718854	abcg/external/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.obj	8c815ecf070c4848
+14	272	6574115536888751	abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_sdl.cpp.obj	30027a3bf485967
+11	278	6574115536868766	abcg/external/imgui/CMakeFiles/imgui.dir/imgui_tables.cpp.obj	c6e2c5941fc53353
+8	281	6574115536978698	abcg/external/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.obj	fa9ada59956e43e5
+3	401	6574115537198572	abcg/external/imgui/CMakeFiles/imgui.dir/imgui_demo.cpp.obj	b0dc376e2005a4fa
+19	407	6574115537698256	abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.obj	7035c86c3127b10d
+278	412	6574115538567718	abcg/CMakeFiles/abcg.dir/abcg_elapsedtimer.cpp.obj	60b1af621747af3f
+230	417	6574115538717629	abcg/external/fmt/CMakeFiles/fmt.dir/format.cc.obj	43b81636cacd768d
+282	443	6574115538697641	abcg/CMakeFiles/abcg.dir/abcg_exception.cpp.obj	7bd5df40173e192f
+274	446	6574115539057424	abcg/CMakeFiles/abcg.dir/abcg_application.cpp.obj	5b8a92fa9c1f7c73
+402	506	6574115539766982	abcg/CMakeFiles/abcg.dir/abcg_openglfunctions.cpp.obj	bffe6b941322f233
+407	590	6574115540036814	abcg/CMakeFiles/abcg.dir/abcg_image.cpp.obj	1aeeac9240f123f5
+443	631	6574115540946256	abcg/CMakeFiles/abcg.dir/abcg_string.cpp.obj	fb4520de76adf27c
+507	643	6574115540966255	abcg/external/imgui/CMakeFiles/imgui.dir/imgui.cpp.obj	a71c14ec6e6c38fe
+447	649	6574115540966255	abcg/CMakeFiles/abcg.dir/abcg_trackball.cpp.obj	3dea2ca3103e8ffc
+413	679	6574115541515920	abcg/CMakeFiles/abcg.dir/abcg_openglwindow.cpp.obj	15de740e2af2c4f7
+651	938	6574115543755123	examples/PONG/CMakeFiles/PONG.dir/openglwindow.cpp.obj	c23e12333312941
+938	1141	6574115545923786	examples/PONG/CMakeFiles/PONG.dir/ball.cpp.obj	71352850312921c0
+439	1219	6574115546533409	abcg/external/fmt/libfmt.a	cd7551c0ac70d18d
+644	1510	6574115549781414	abcg/external/imgui/libimgui.a	ee7a7e660ba85cdc
+1511	2494	6574115559704835	abcg/libabcg.a	c0a39b7b70085154
+680	5211	6574115586353777	examples/PONG/CMakeFiles/PONG.dir/Player2.cpp.obj	420e0a9614b72861
+13	4403	6574115943002871	examples/PONG/CMakeFiles/PONG.dir/Player1.cpp.obj	9c2a151a885d997e
+9	4854	6574115947511378	examples/PONG/CMakeFiles/PONG.dir/main.cpp.obj	680477d7b2da1d9
+4854	19896	0	bin/PONG.exe	82caf77c74fb9ca1
