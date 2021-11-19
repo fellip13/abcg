@@ -23,6 +23,17 @@ void Camera::dolly(float speed) {
   computeViewMatrix();
 }
 
+void Camera::lift(float speed) {
+  // Compute vector to the up
+  glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+
+  // Move eye and center to the up (speed < 0) or to the down (speed > 0)
+  m_at -= up * speed;
+  m_eye -= up * speed;
+
+  computeViewMatrix();
+}
+
 void Camera::truck(float speed) {
   // Compute forward vector (view direction)
   const glm::vec3 forward{glm::normalize(m_at - m_eye)};
@@ -35,6 +46,21 @@ void Camera::truck(float speed) {
 
   computeViewMatrix();
 }
+
+// Tentativa de fazer a camera do eixo X
+// void Camera::panX(float speed) {
+//   glm::mat4 transform{glm::mat4(1.0f)};
+//   glm::vec3 x = {glm::vec3(1.0f, 0.0f, 0.0f)};
+
+//   // Rotate camera around its local x axis
+//   transform = glm::translate(transform, m_eye);
+//   transform = glm::rotate(transform, -speed, x);
+//   transform = glm::translate(transform, -m_eye);
+
+//   m_at = transform * glm::vec4(m_at, 1.0f);
+
+//   computeViewMatrix();
+// }
 
 void Camera::pan(float speed) {
   glm::mat4 transform{glm::mat4(1.0f)};

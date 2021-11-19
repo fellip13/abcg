@@ -32,8 +32,14 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
       m_panSpeed = -1.0f;
     if (ev.key.keysym.sym == SDLK_RIGHT || ev.key.keysym.sym == SDLK_d)
       m_panSpeed = 1.0f;
-    if (ev.key.keysym.sym == SDLK_q) m_truckSpeed = -1.0f;
-    if (ev.key.keysym.sym == SDLK_e) m_truckSpeed = 1.0f;
+    if (ev.key.keysym.sym == SDLK_q) m_truckSpeed = -0.3f;
+    if (ev.key.keysym.sym == SDLK_e) m_truckSpeed = 0.3f;
+    if (ev.key.keysym.sym == SDLK_r) m_liftSpeed = -0.3f;
+    if (ev.key.keysym.sym == SDLK_f) m_liftSpeed = 0.3f;
+
+    // Tentativa de fazer a camera do eixo X
+    // if (ev.key.keysym.sym == SDLK_t) m_panXSpeed = -1.0f;
+    // if (ev.key.keysym.sym == SDLK_g) m_panXSpeed = 1.0f;
   }
   if (ev.type == SDL_KEYUP) {
     if ((ev.key.keysym.sym == SDLK_UP || ev.key.keysym.sym == SDLK_w) &&
@@ -50,6 +56,12 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
       m_panSpeed = 0.0f;
     if (ev.key.keysym.sym == SDLK_q && m_truckSpeed < 0) m_truckSpeed = 0.0f;
     if (ev.key.keysym.sym == SDLK_e && m_truckSpeed > 0) m_truckSpeed = 0.0f;
+    if (ev.key.keysym.sym == SDLK_r && m_liftSpeed < 0) m_liftSpeed = 0.0f;
+    if (ev.key.keysym.sym == SDLK_f && m_liftSpeed > 0) m_liftSpeed = 0.0f;
+
+    // Tentativa de fazer a camera do eixo X
+    // if (ev.key.keysym.sym == SDLK_t && m_panXSpeed < 0) m_panXSpeed = 0.0f;
+    // if (ev.key.keysym.sym == SDLK_g && m_panXSpeed > 0) m_panXSpeed = 0.0f;
   }
 }
 
@@ -189,7 +201,7 @@ void OpenGLWindow::paintGL() {
   glm::mat4 model{1.0f};
   model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.5f));
+  model = glm::scale(model, glm::vec3(0.5f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 0.976f, 0.733f, 0.184f, 1.0f);
@@ -199,9 +211,9 @@ void OpenGLWindow::paintGL() {
   // Mercury
   model = glm::mat4(1.0);
   model = glm::rotate(model, glm::radians(0.0479f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-1.8f, 0.0f, 0.0f));
+  model = glm::translate(model, glm::vec3(-1.8f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.008 * 0.383f));
+  model = glm::scale(model, glm::vec3(0.008 * 0.383f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 0.588f, 0.588f, 0.588f, 1.0f);
@@ -211,9 +223,9 @@ void OpenGLWindow::paintGL() {
   // Venus
   model = glm::mat4(1.0);
   model = glm::rotate(model, glm::radians(0.035f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-2.0f, 0.0f, 0.0f));
+  model = glm::translate(model, glm::vec3(-2.0f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.008 * 0.949f));
+  model = glm::scale(model, glm::vec3(0.008 * 0.949f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 1.0f, 0.517f, 0.278f, 1.0f);
@@ -223,7 +235,7 @@ void OpenGLWindow::paintGL() {
   // Earth
   model = glm::mat4(1.0);
   model = glm::rotate(model, glm::radians(0.0298f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-2.2f, 0.0f, 0.0f));
+  model = glm::translate(model, glm::vec3(-2.2f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
   model = glm::scale(model, glm::vec3(0.008f));
 
@@ -232,12 +244,27 @@ void OpenGLWindow::paintGL() {
   abcg::glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT,
                        nullptr);
 
+  // Moon
+  model = glm::mat4(1.0);
+  model = glm::rotate(model, glm::radians(0.0298f * count), glm::vec3(0, 1, 0));
+  model = glm::translate(model, glm::vec3(-2.2f * 0.1f, 0.0f, 0.0f));
+  model = glm::rotate(model, glm::radians(0.0298f * 2.0f * count),
+                      glm::vec3(0, 1, 0));
+  model = glm::translate(model, glm::vec3(-0.5f * 0.1f, 0.0f, 0.0f));
+  model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
+  model = glm::scale(model, glm::vec3(0.008f * 0.273f));
+
+  abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
+  abcg::glUniform4f(colorLoc, 0.200f, 0.200f, 0.200f, 1.0f);
+  abcg::glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT,
+                       nullptr);
+
   // Mars
   model = glm::mat4(1.0);
   model = glm::rotate(model, glm::radians(0.0241f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-2.4f, 0.0f, 0.0f));
+  model = glm::translate(model, glm::vec3(-2.4f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.008f * 0.532f));
+  model = glm::scale(model, glm::vec3(0.008f * 0.532f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 0.976f, 0.262f, 0.262f, 1.0f);
@@ -247,9 +274,9 @@ void OpenGLWindow::paintGL() {
   // Jupiter
   model = glm::mat4(1.0);
   model = glm::rotate(model, glm::radians(0.0131f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-2.8f, 0.0f, 0.0f));
+  model = glm::translate(model, glm::vec3(-2.8f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.008f * 11.21f));
+  model = glm::scale(model, glm::vec3(0.008f * 11.21f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 0.725f, 0.541f, 0.372f, 1.0f);
@@ -259,9 +286,9 @@ void OpenGLWindow::paintGL() {
   // Saturn
   model = glm::mat4(1.0);
   model = glm::rotate(model, glm::radians(0.0097f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-3.6f, 0.0f, 0.0f));
+  model = glm::translate(model, glm::vec3(-3.6f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.008f * 9.45f));
+  model = glm::scale(model, glm::vec3(0.008f * 9.45f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 0.784f, 0.666f, 0.254f, 1.0f);
@@ -271,9 +298,9 @@ void OpenGLWindow::paintGL() {
   // Uranus
   model = glm::mat4(1.0);
   model = glm::rotate(model, glm::radians(0.0068f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-4.1f, 0.0f, 0.0f));
+  model = glm::translate(model, glm::vec3(-4.1f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.008f * 4.01f));
+  model = glm::scale(model, glm::vec3(0.008f * 4.01f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 0.313f, 0.780f, 0.984f, 1.0f);
@@ -282,10 +309,11 @@ void OpenGLWindow::paintGL() {
 
   // Neptune
   model = glm::mat4(1.0);
-  model = glm::rotate(model, glm::radians(0.0054f * count), glm::vec3(0, 1, 0));
-  model = glm::translate(model, glm::vec3(-4.6f, 0.0f, 0.0f));
+  model = glm::rotate(model, glm::radians(0.0054f * count * 0.1f),
+                      glm::vec3(0, 1, 0));
+  model = glm::translate(model, glm::vec3(-4.6f * 0.1f, 0.0f, 0.0f));
   model = glm::rotate(model, glm::radians(0.005f * count), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.008f * 3.88f));
+  model = glm::scale(model, glm::vec3(0.008f * 3.88f * 0.1f));
 
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(colorLoc, 0.231f, 0.415f, 0.768f, 1.0f);
@@ -301,7 +329,18 @@ void OpenGLWindow::paintGL() {
   count++;
 }
 
-void OpenGLWindow::paintUI() { abcg::OpenGLWindow::paintUI(); }
+void OpenGLWindow::paintUI() {
+  abcg::OpenGLWindow::paintUI();
+  const auto size{ImVec2(100, 20)};
+  const auto position{
+      ImVec2(((m_viewportHeight - size.x) / 2.0f) * 0.6f, 0.8f)};
+  ImGui::SetNextWindowPos(position);
+  ImGui::SetNextWindowSize(size);
+  ImGui::Text("Eye - Px: %f ,Py: %f ,Pz: %f ", m_camera.m_eye.x,
+              m_camera.m_eye.y, m_camera.m_eye.z);
+  ImGui::Text("At - Px: %f ,Py: %f ,Pz: %f ", m_camera.m_at.x, m_camera.m_at.y,
+              m_camera.m_at.z);
+}
 
 void OpenGLWindow::resizeGL(int width, int height) {
   m_viewportWidth = width;
@@ -323,5 +362,8 @@ void OpenGLWindow::update() {
   // Update LookAt camera
   m_camera.dolly(m_dollySpeed * deltaTime);
   m_camera.truck(m_truckSpeed * deltaTime);
+  m_camera.lift(m_liftSpeed * deltaTime);
   m_camera.pan(m_panSpeed * deltaTime);
+  // Tentativa de fazer a camera do eixo X
+  // m_camera.panX(m_panXSpeed * deltaTime);
 }

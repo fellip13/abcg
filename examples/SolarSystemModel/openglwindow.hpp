@@ -35,8 +35,10 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   Camera m_camera;
   float m_dollySpeed{0.0f};
   float m_truckSpeed{0.0f};
+  float m_liftSpeed{0.0f};
   float m_panSpeed{0.0f};
-
+  // Tentativa de fazer a camera do eixo X
+  // float m_panXSpeed{0.0f};
 
   std::vector<Vertex> m_vertices;
   std::vector<GLuint> m_indices;
