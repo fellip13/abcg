@@ -9,8 +9,10 @@ int main(int argc, char **argv) {
 
     auto window{std::make_unique<OpenGLWindow>()};
     window->setOpenGLSettings({.samples = 4});
-    window->setWindowSettings(
-        {.width = 600, .height = 600, .title = "Solar System Model"});
+    window->setWindowSettings({.width = 600,
+                               .height = 600,
+                               .showFPS = false,
+                               .title = "Solar System Model"});
 
     app.run(std::move(window));
   } catch (const abcg::Exception &exception) {

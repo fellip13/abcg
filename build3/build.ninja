@@ -542,6 +542,13 @@ build examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/openglwindow.cpp
   OBJECT_DIR = examples\SolarSystemModel\CMakeFiles\SolarSystemModel.dir
   OBJECT_FILE_DIR = examples\SolarSystemModel\CMakeFiles\SolarSystemModel.dir
 
+build examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/model.cpp.obj: CXX_COMPILER__SolarSystemModel_Debug C$:/ComputacaoGrafica/Fellip/Projeto_2_CG/abcg/examples/SolarSystemModel/model.cpp || cmake_object_order_depends_target_SolarSystemModel
+  DEP_FILE = examples\SolarSystemModel\CMakeFiles\SolarSystemModel.dir\model.cpp.obj.d
+  FLAGS = -g -flto -fno-fat-lto-objects -Wall -Wextra -pedantic -std=gnu++2a
+  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/ComputacaoGrafica/Fellip/Projeto_2_CG/abcg/abcg -IC:/ComputacaoGrafica/Fellip/Projeto_2_CG/abcg/abcg/external/cppitertools -IC:/ComputacaoGrafica/Fellip/Projeto_2_CG/abcg/abcg/external/fmt -IC:/ComputacaoGrafica/Fellip/Projeto_2_CG/abcg/abcg/external/glm/.. -IC:/ComputacaoGrafica/Fellip/Projeto_2_CG/abcg/abcg/external/imgui -isystem C:/ComputacaoGrafica/Fellip/Projeto_2_CG/abcg/abcg/external
+  OBJECT_DIR = examples\SolarSystemModel\CMakeFiles\SolarSystemModel.dir
+  OBJECT_FILE_DIR = examples\SolarSystemModel\CMakeFiles\SolarSystemModel.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SolarSystemModel
@@ -550,7 +557,7 @@ build examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/openglwindow.cpp
 #############################################
 # Link the executable bin\SolarSystemModel.exe
 
-build bin/SolarSystemModel.exe: CXX_EXECUTABLE_LINKER__SolarSystemModel_Debug examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/camera.cpp.obj examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/main.cpp.obj examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/openglwindow.cpp.obj | abcg/libabcg.a C$:/msys64/mingw64/lib/libglew32.dll.a abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a C$:/msys64/mingw64/lib/libSDL2main.a C$:/msys64/mingw64/lib/libSDL2.dll.a C$:/msys64/mingw64/lib/libSDL2_image.dll.a || abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a abcg/libabcg.a
+build bin/SolarSystemModel.exe: CXX_EXECUTABLE_LINKER__SolarSystemModel_Debug examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/camera.cpp.obj examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/main.cpp.obj examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/openglwindow.cpp.obj examples/SolarSystemModel/CMakeFiles/SolarSystemModel.dir/model.cpp.obj | abcg/libabcg.a C$:/msys64/mingw64/lib/libglew32.dll.a abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a C$:/msys64/mingw64/lib/libSDL2main.a C$:/msys64/mingw64/lib/libSDL2.dll.a C$:/msys64/mingw64/lib/libSDL2_image.dll.a || abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a abcg/libabcg.a
   FLAGS = -g -flto -fno-fat-lto-objects
   LINK_LIBRARIES = abcg/libabcg.a  -lmingw32  -lSDL2main  -lSDL2  -lglew32  -lopengl32  C:/msys64/mingw64/lib/libglew32.dll.a  -lopengl32  -lglu32  abcg/external/fmt/libfmt.a  abcg/external/imgui/libimgui.a  -lmingw32  -mwindows  C:/msys64/mingw64/lib/libSDL2main.a  C:/msys64/mingw64/lib/libSDL2.dll.a  C:/msys64/mingw64/lib/libSDL2_image.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = examples\SolarSystemModel\CMakeFiles\SolarSystemModel.dir

@@ -5,14 +5,7 @@
 
 #include "abcg.hpp"
 #include "camera.hpp"
-
-struct Vertex {
-  glm::vec3 position;
-
-  bool operator==(const Vertex& other) const {
-    return position == other.position;
-  }
-};
+#include "model.hpp"
 
 class OpenGLWindow : public abcg::OpenGLWindow {
  protected:
@@ -33,17 +26,30 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   int m_viewportHeight{};
 
   Camera m_camera;
+  Model m_sun_model;
+  Model m_earth_model;
+  Model m_mercurio_model;
+  Model m_venus_model;
+  Model m_mars_model;
+  Model m_jupiter_model;
+  Model m_neptuno_model;
+  Model m_saturn_model;
+  Model m_uranus_model;
+  Model m_pluto_model;
+  Model m_moon_model;
+
   float m_dollySpeed{0.0f};
   float m_truckSpeed{0.0f};
-  float m_liftSpeed{0.0f};
+  float m_pedestalSpeed{0.0f};
   float m_panSpeed{0.0f};
-  // Tentativa de fazer a camera do eixo X
-  // float m_panXSpeed{0.0f};
+  float m_tiltSpeed{0.0f};
+  bool pause = false;
+  int count = 1;
 
   std::vector<Vertex> m_vertices;
   std::vector<GLuint> m_indices;
 
-  void loadModelFromFile(std::string_view path);
+  // void loadModelFromFile(std::string_view path);
   void update();
 };
 
