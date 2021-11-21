@@ -286,7 +286,7 @@ void OpenGLWindow::paintGL() {
 
   abcg::glBindVertexArray(0);
   abcg::glUseProgram(0);
-  if (!pause) count++;
+  if (!pause) count += 20;
 }
 
 void OpenGLWindow::paintUI() {
