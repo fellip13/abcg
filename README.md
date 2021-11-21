@@ -25,15 +25,24 @@ Os movimentos da camera seguem como padrão:
 ![Imgur](https://i.imgur.com/OA3We8k.png)
 
 E seus controles são:
+
+Tecla | Ação
+:------: | :------:
+ESC    | Encerra o programa
+↑      | Movimenta a barrinha direita para cima
+↓      | Movimenta a barrinha direita para baixo.
+W      | Movimenta a barrinha esquerda para cima.
+S      | Movimenta a barrinha esquerda para baixo.
+
 Tecla | Movimento
 :------: | :------:
- 8 / 2   | Dolly	        
- 4 / 6	 | Truck		
- A / D	 | Pan	        
- w / S	 |Tilt		
- ↑ / ↓	 |Pedestal	
- R		   |Reset		
- P	     |Pause		
+8 / 2  | Dolly	        
+4 / 6	 | Truck		
+A / D	 | Pan	        
+w / S	 | Tilt		
+↑ / ↓	 | Pedestal	
+R		    | Reset		
+P	     | Pause		
 
 
 ### Código Fonte
