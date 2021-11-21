@@ -22,6 +22,7 @@ O projeto foi desenvolvido utilizando a biblioteca abcg e modelos gratuitos 3D d
 
 ### Movimento da câmera e controles
 Os movimentos da camera seguem como padrão:
+
 ![Imgur](https://i.imgur.com/OA3We8k.png)
 
 E seus controles são:
