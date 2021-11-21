@@ -24,7 +24,7 @@ Para tanto, foram carregados onze modelos .obj. Os modelos representa os seguint
 
 ### Movimento da câmera e controles
 Os movimentos da camera seguem como padrão:
-![Movimentos de camera](https://imgur.com/OA3We8k)
+![Imgur](https://i.imgur.com/OA3We8k.png)
 
 E seus controles são:
 Tecla | Movimento
