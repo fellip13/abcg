@@ -8,17 +8,7 @@ Projeto 2 - Computação Gráfica - Sistema Solar
 ### Descrição
 A aplicação se trata de um observatório 3D do sistema solar com animação. O observador pode mover a câmera entre os planetas para observar melhor o sistema.
 O projeto foi desenvolvido utilizando a biblioteca abcg e modelos gratuitos 3D do site [Free3D](https://free3d.com/).
-Para tanto, foram carregados dez modelos .obj. Os modelos representam os seguintes corpos celestes:
-
-https://free3d.com/3d-model/sun-43982.html
-https://free3d.com/3d-model/mercury-23007.html
-https://free3d.com/3d-model/venus-98714.html
-https://free3d.com/3d-model/photorealistic-earth-98256.html
-https://free3d.com/3d-model/mars-photorealistic-2k-671043.html
-https://free3d.com/3d-model/jupiter-v1--853820.html
-https://free3d.com/3d-model/saturn-v1--741827.html
-https://free3d.com/3d-model/uranus-v2--767518.html
-https://free3d.com/3d-model/neptune-82847.html
+Para tanto, foram carregados onze modelos .obj. Os modelos representa os seguintes corpos celestes (hiperlinks para a fonte):
 
 - [Sol](https://free3d.com/3d-model/sun-43982.html)
 - [Mercúrio](https://free3d.com/3d-model/mercury-23007.html)
