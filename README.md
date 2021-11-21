@@ -1,6 +1,5 @@
 Projeto 2 - Computação Gráfica - Sistema Solar
 ======
-
 ### Autores
 ##### Fellip da Silva Ribeiro - RA: 11201921507
 ##### Verônica Agatha Gonçalves Isobe - RA: 11201920292
