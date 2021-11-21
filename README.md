@@ -26,14 +26,6 @@ Os movimentos da camera seguem como padrão:
 
 E seus controles são:
 
-Tecla | Ação
-:------: | :------:
-ESC    | Encerra o programa
-↑      | Movimenta a barrinha direita para cima
-↓      | Movimenta a barrinha direita para baixo.
-W      | Movimenta a barrinha esquerda para cima.
-S      | Movimenta a barrinha esquerda para baixo.
-
 Tecla | Movimento
 :------: | :------:
 8 / 2  | Dolly	        
