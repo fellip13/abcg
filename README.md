@@ -1,9 +1,9 @@
 Projeto 2 - Computação Gráfica - Sistema Solar
 ======
-### Autores
-##### Fellip da Silva Ribeiro - RA: 11201921507
-##### Verônica Agatha Gonçalves Isobe - RA: 11201920292
-
+## Autores
+### Fellip da Silva Ribeiro - RA: 11201921507
+### Verônica Agatha Gonçalves Isobe - RA: 11201920292
+------
 ### Descrição
 A aplicação se trata de um observatório 3D do sistema solar com animação. O observador pode mover a câmera entre os planetas para observar melhor o sistema.
 O projeto foi desenvolvido utilizando a biblioteca abcg e modelos gratuitos 3D do site [Free3D](https://free3d.com/).
