@@ -47,7 +47,6 @@ https://fellip13.github.io/SolarSystemModel/
 ### Observação
 Caso ache necessário, é possivel achar o SolarSystemModel.exe nesse repositório pelo seguinte caminho: abcg → build3 → bin → SolarSystemModel → SolarSystemModel.exe
 ------
-======
 #Projeto 1 - Computação Gráfica - PONG
 ======
 ## Autores
