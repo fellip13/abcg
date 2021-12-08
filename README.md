@@ -1,3 +1,60 @@
+Projeto 3 - Computação Gráfica - Simulação do Sistema Solar V2
+======
+## Autores
+### Fellip da Silva Ribeiro - RA: 11201921507
+### Verônica Agatha Gonçalves Isobe - RA: 11201920292
+------
+### Descrição
+A aplicação se trata de um observatório 3D do sistema solar com animação. O observador pode mover a câmera entre os planetas para observar melhor o sistema.
+O projeto foi desenvolvido utilizando a biblioteca abcg e modelos 3D e texturas gratuitas do site [Free3D](https://free3d.com/). Os modelos .obj utlizados representam os seguintes corpos celestes (hiperlinks para a fonte):
+
+- [Sol](https://free3d.com/3d-model/sun-43982.html)
+- [Mercúrio](https://free3d.com/3d-model/mercury-23007.html)
+- [Vênus](https://free3d.com/3d-model/venus-98714.html)
+- [Terra](https://free3d.com/3d-model/photorealistic-earth-98256.html)
+- [Lua](https://free3d.com/3d-model/moon-photorealistic-2k-853071.html)
+- [Marte](https://free3d.com/3d-model/mars-photorealistic-2k-671043.html)
+- [Júpiter](https://free3d.com/3d-model/jupiter-v1--853820.html)
+- [Saturno](https://free3d.com/3d-model/saturn-v1--741827.html)
+- [Urano](https://free3d.com/3d-model/uranus-v2--767518.html)
+- [Netuno](https://free3d.com/3d-model/neptune-82847.html)
+- [Plutão](https://free3d.com/3d-model/pluto-v1--424613.html)
+
+Além desse modelos 3D, também foi utizado uma textura cubemap para o Skybox implementado. Essa textura foi obtida de forma gratuita no site [MapCore](https://www.mapcore.org) e modificada para melhor atender a estética que buscavamos. A seguir o link para a textura:
+
+- [High Resolution 2048 Space Skybox (Source/VTF)](https://www.mapcore.org/topic/19867-high-res-2048-space-skybox-sourcevtf/)
+
+Vale ressaltar que os tamanhos e orbitas dos planetas não estão em escala, sendo o único dado fudamentado na realidade a velocidade das orbitas.
+
+### Movimento da câmera e controles
+Os movimentos da camera seguem como padrão:
+
+![Imgur](https://i.imgur.com/OA3We8k.png)
+
+E seus controles são:
+
+Tecla | Movimento
+:------: | :------:
+8 / 2  | Dolly	        
+4 / 6	 | Truck		
+A / D	 | Pan	        
+w / S	 | Tilt		
+↑ / ↓	 | Pedestal	
+R		    | Reset		
+P	     | Pause		
+
+Além desses controles, há também um slider para controlar a velocidade da simulação, variando de 0.1x a 10x a velocidade original e um menu de coordenadas para melhor orientação do usuário. Todas essas informações e controles podem ser acessados pelos widgets minimizaveis no topo da tela.
+
+### Código Fonte
+O código fonte está dentro da pasta Examples, dentro do diretório ABCg, como "SolarSystemModelV2".
+
+### Link do Github Pages
+https://fellip13.github.io/SolarSystemModelV2/
+
+### Observação
+Caso ache necessário, é possivel achar o SolarSystemModel.exe nesse repositório pelo seguinte caminho: abcg → build4 → bin → SolarSystemModelV2 → SolarSystemModelV2.exe
+
+------
 Projeto 2 - Computação Gráfica - Sistema Solar
 ======
 ## Autores
