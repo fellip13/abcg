@@ -55,8 +55,7 @@ https://fellip13.github.io/SolarSystemModelV2/
 Caso ache necessário, é possivel achar o SolarSystemModel.exe nesse repositório pelo seguinte caminho: abcg → build4 → bin → SolarSystemModelV2 → SolarSystemModelV2.exe
 
 ------
-Projeto 2 - Computação Gráfica - Sistema Solar
-======
+# Projeto 2 - Computação Gráfica - Sistema Solar
 ## Autores
 ### Fellip da Silva Ribeiro - RA: 11201921507
 ### Verônica Agatha Gonçalves Isobe - RA: 11201920292
