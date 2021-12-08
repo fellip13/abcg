@@ -105,7 +105,6 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   GLuint m_program;
 
   // Skybox
-  Model m_modelBox;
   GLuint m_skyVAO{};
   GLuint m_skyVBO{};
   GLuint m_skyProgram{};

@@ -66,7 +66,7 @@ void OpenGLWindow::initializeGL() {
   loadModel();
 
   // // Load cube map
-  m_modelBox.loadCubeTexture(getAssetsPath() + "maps/cube/");
+  astros[0].m_model.loadCubeTexture(getAssetsPath() + "maps/cube/");
 
   initializeSkybox();
 }
@@ -247,7 +247,7 @@ void OpenGLWindow::renderSkybox() {
   abcg::glBindVertexArray(m_skyVAO);
 
   glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_CUBE_MAP, m_modelBox.getCubeTexture());
+  glBindTexture(GL_TEXTURE_CUBE_MAP, astros[0].m_model.getCubeTexture());
 
   abcg::glEnable(GL_CULL_FACE);
   abcg::glFrontFace(GL_CW);
@@ -384,7 +384,7 @@ void OpenGLWindow::resizeGL(int width, int height) {
   m_viewportHeight = height;
   m_camera.computeProjectionMatrix(width, height);
 }
-
+ 
 void OpenGLWindow::terminateGL() {
   for (int i = 0; i < 11; i++) {
     astros[i].m_model.terminateGL();
