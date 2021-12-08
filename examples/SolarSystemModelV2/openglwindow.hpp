@@ -33,17 +33,17 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   };
 
   Astro astros[11];
-  std::string names[11][2] = {"sun.obj",     "sun_texture.jpg",
-                              "mercury.obj", "mercury_texture.jpg",
-                              "venus.obj",   "venus_texture.jpg",
-                              "earth.obj",   "earth_texture.png",
-                              "moon.obj",    "moon_texture.png",
-                              "mars.obj",    "mars_texture.jpg",
-                              "jupiter.obj", "jupiter_texture.jpg",
-                              "saturn.obj",  "saturn_texture.jpg",
-                              "uranus.obj",  "uranus_texture.jpg",
-                              "neptune.obj", "neptune_texture.jpg",
-                              "pluto.obj",   "pluto_texture.jpg"};
+  std::string names[11][2] = {{"sun.obj", "sun_texture.jpg"},
+                              {"mercury.obj", "mercury_texture.jpg"},
+                              {"venus.obj", "venus_texture.jpg"},
+                              {"earth.obj", "earth_texture.png"},
+                              {"moon.obj", "moon_texture.png"},
+                              {"mars.obj", "mars_texture.jpg"},
+                              {"jupiter.obj", "jupiter_texture.jpg"},
+                              {"saturn.obj", "saturn_texture.jpg"},
+                              {"uranus.obj", "uranus_texture.jpg"},
+                              {"neptune.obj", "neptune_texture.jpg"},
+                              {"pluto.obj", "pluto_texture.jpg"}};
 
   Property properties[11] = {
       {glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f,
@@ -85,8 +85,13 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   int count = 1;
   float simulation_velocity = 1;
 
-  // Light
+  // Mapping mode
+  // 0: triplanar; 1: cylindrical; 2: spherical; 3: from mesh
+  int m_mappingMode{};
+
+  // Light and material properties
   glm::vec4 m_lightDir{0.5f, 0.0f, 0.0f, 0.0f};
+  glm::mat4 m_modelMatrix{1.0f};
   glm::mat4 m_viewMatrix{1.0f};
   glm::mat4 m_projMatrix{1.0f};
   glm::vec4 m_Ia{1.0f};
@@ -97,9 +102,9 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   glm::vec4 m_Ks{};
   float m_shininess{};
 
-  // Shaders
   GLuint m_program;
 
+  // Skybox
   Model m_modelBox;
   GLuint m_skyVAO{};
   GLuint m_skyVBO{};

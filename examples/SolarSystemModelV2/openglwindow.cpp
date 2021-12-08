@@ -7,6 +7,8 @@
 #include <glm/gtc/matrix_inverse.hpp>
 #include <string>
 
+#include "imfilebrowser.h"
+
 void OpenGLWindow::handleEvent(SDL_Event& ev) {
   if (ev.type == SDL_KEYDOWN) {
     if (ev.key.keysym.sym == SDLK_KP_8 || ev.key.keysym.sym == SDLK_8)
@@ -55,15 +57,17 @@ void OpenGLWindow::initializeGL() {
   glEnable(GL_DEPTH_TEST);
 
   // Create program
-  auto path{getAssetsPath() + "shaders/texture"};
-  auto program{createProgramFromFile(path + ".vert", path + ".frag")};
+  const auto path{getAssetsPath() + "shaders/texture"};
+  const auto program{createProgramFromFile(path + ".vert", path + ".frag")};
   m_program = program;
+  m_mappingMode = 3;
 
   // Load default model
   loadModel();
 
-  // Load cube map
+  // // Load cube map
   m_modelBox.loadCubeTexture(getAssetsPath() + "maps/cube/");
+
   initializeSkybox();
 }
 
@@ -119,44 +123,55 @@ void OpenGLWindow::loadModel() {
 void OpenGLWindow::paintGL() {
   update();
 
-  glEnable(GL_CULL_FACE);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glViewport(0, 0, m_viewportWidth, m_viewportHeight);
+  abcg::glEnable(GL_CULL_FACE);
+  abcg::glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  abcg::glViewport(0, 0, m_viewportWidth, m_viewportHeight);
 
-  glUseProgram(m_program);
+  abcg::glUseProgram(m_program);
 
   // Get location of uniform variables
-  GLint viewMatrixLoc{glGetUniformLocation(m_program, "viewMatrix")};
-  GLint projMatrixLoc{glGetUniformLocation(m_program, "projMatrix")};
-  GLint modelMatrixLoc{glGetUniformLocation(m_program, "modelMatrix")};
-  GLint normalMatrixLoc{glGetUniformLocation(m_program, "normalMatrix")};
-  GLint lightDirLoc{glGetUniformLocation(m_program, "lightDirWorldSpace")};
-  GLint shininessLoc{glGetUniformLocation(m_program, "shininess")};
-  GLint IaLoc{glGetUniformLocation(m_program, "Ia")};
-  GLint IdLoc{glGetUniformLocation(m_program, "Id")};
-  GLint IsLoc{glGetUniformLocation(m_program, "Is")};
-  GLint KaLoc{glGetUniformLocation(m_program, "Ka")};
-  GLint KdLoc{glGetUniformLocation(m_program, "Kd")};
-  GLint KsLoc{glGetUniformLocation(m_program, "Ks")};
-  GLint diffuseTexLoc{glGetUniformLocation(m_program, "diffuseTex")};
-  GLint normalTexLoc{glGetUniformLocation(m_program, "normalTex")};
+  const GLint viewMatrixLoc{
+      abcg::glGetUniformLocation(m_program, "viewMatrix")};
+  const GLint projMatrixLoc{
+      abcg::glGetUniformLocation(m_program, "projMatrix")};
+  const GLint modelMatrixLoc{
+      abcg::glGetUniformLocation(m_program, "modelMatrix")};
+  const GLint normalMatrixLoc{
+      abcg::glGetUniformLocation(m_program, "normalMatrix")};
+  const GLint lightDirLoc{
+      abcg::glGetUniformLocation(m_program, "lightDirWorldSpace")};
+  const GLint shininessLoc{abcg::glGetUniformLocation(m_program, "shininess")};
+  const GLint IaLoc{abcg::glGetUniformLocation(m_program, "Ia")};
+  const GLint IdLoc{abcg::glGetUniformLocation(m_program, "Id")};
+  const GLint IsLoc{abcg::glGetUniformLocation(m_program, "Is")};
+  const GLint KaLoc{abcg::glGetUniformLocation(m_program, "Ka")};
+  const GLint KdLoc{abcg::glGetUniformLocation(m_program, "Kd")};
+  const GLint KsLoc{abcg::glGetUniformLocation(m_program, "Ks")};
+  const GLint diffuseTexLoc{
+      abcg::glGetUniformLocation(m_program, "diffuseTex")};
+  const GLint normalTexLoc{abcg::glGetUniformLocation(m_program, "normalTex")};
+  const GLint mappingModeLoc{
+      abcg::glGetUniformLocation(m_program, "mappingMode")};
 
   // Set uniform variables used by every scene object
   glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.m_viewMatrix[0][0]);
   glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_camera.m_projMatrix[0][0]);
-  glUniform1i(diffuseTexLoc, 0);
-  glUniform1i(normalTexLoc, 1);
-  glUniform4fv(lightDirLoc, 1, &m_lightDir.x);
-  glUniform4fv(IaLoc, 1, &m_Ia.x);
-  glUniform4fv(IdLoc, 1, &m_Id.x);
-  glUniform4fv(IsLoc, 1, &m_Is.x);
+  abcg::glUniform1i(diffuseTexLoc, 0);
+  abcg::glUniform1i(normalTexLoc, 1);
+  abcg::glUniform1i(mappingModeLoc, m_mappingMode);
+
+  // Light
+  abcg::glUniform4fv(lightDirLoc, 1, &m_lightDir.x);
+  abcg::glUniform4fv(IaLoc, 1, &m_Ia.x);
+  abcg::glUniform4fv(IdLoc, 1, &m_Id.x);
+  abcg::glUniform4fv(IsLoc, 1, &m_Is.x);
 
   // Sun material properties
   float mat[4] = {1.0f, 1.0f, 1.0f, 1.0f};
-  glUniform1f(shininessLoc, 5000.0f);
-  glUniform4fv(KaLoc, 1, mat);
-  glUniform4fv(KdLoc, 1, mat);
-  glUniform4fv(KsLoc, 1, mat);
+  abcg::glUniform1f(shininessLoc, 5000.0f);
+  abcg::glUniform4fv(KaLoc, 1, mat);
+  abcg::glUniform4fv(KdLoc, 1, mat);
+  abcg::glUniform4fv(KsLoc, 1, mat);
 
   // Rendering the astronomical objects
   for (int i = 0; i < 11; i++) {
@@ -175,10 +190,10 @@ void OpenGLWindow::paintGL() {
     // If the astronomical object is not the sun [astro 0], make then
     // orbit the sun
     if (i != 0) {
-      glUniform1f(shininessLoc, m_shininess);
-      glUniform4fv(KaLoc, 1, &m_Ka.x);
-      glUniform4fv(KdLoc, 1, &m_Kd.x);
-      glUniform4fv(KsLoc, 1, &m_Ks.x);
+      abcg::glUniform1f(shininessLoc, m_shininess);
+      abcg::glUniform4fv(KaLoc, 1, &m_Ka.x);
+      abcg::glUniform4fv(KdLoc, 1, &m_Kd.x);
+      abcg::glUniform4fv(KsLoc, 1, &m_Ks.x);
 
       astros[i].m_modelMatrix = glm::rotate(
           astros[i].m_modelMatrix,
@@ -197,13 +212,13 @@ void OpenGLWindow::paintGL() {
     astros[i].m_modelMatrix =
         glm::scale(astros[i].m_modelMatrix, glm::vec3(properties[i].scale));
 
-    glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE,
-                       &astros[i].m_modelMatrix[0][0]);
+    abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE,
+                             &astros[i].m_modelMatrix[0][0]);
 
-    auto modelViewMatrix{
+    const auto modelViewMatrix{
         glm::mat3(m_camera.m_viewMatrix * astros[i].m_modelMatrix)};
     glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
-    glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
+    abcg::glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
 
     astros[i].m_model.render(astros[i].m_trianglesToDraw);
   }
@@ -223,9 +238,10 @@ void OpenGLWindow::renderSkybox() {
   const GLint skyTexLoc{abcg::glGetUniformLocation(m_skyProgram, "skyTex")};
 
   // Set uniform variables
-  const auto viewMatrix{m_camera.m_viewMatrix};
-  abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &viewMatrix[0][0]);
-  abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_projMatrix[0][0]);
+  abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE,
+                           &m_camera.m_viewMatrix[0][0]);
+  abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE,
+                           &m_camera.m_projMatrix[0][0]);
   abcg::glUniform1i(skyTexLoc, 0);
 
   abcg::glBindVertexArray(m_skyVAO);
@@ -245,6 +261,34 @@ void OpenGLWindow::renderSkybox() {
 
 void OpenGLWindow::paintUI() {
   abcg::OpenGLWindow::paintUI();
+
+  // File browser for models
+  static ImGui::FileBrowser fileDialogModel;
+  fileDialogModel.SetTitle("Load 3D Model");
+  fileDialogModel.SetTypeFilters({".obj"});
+  fileDialogModel.SetWindowSize(m_viewportWidth * 0.8f,
+                                m_viewportHeight * 0.8f);
+
+  // File browser for textures
+  static ImGui::FileBrowser fileDialogDiffuseMap;
+  fileDialogDiffuseMap.SetTitle("Load Diffuse Map");
+  fileDialogDiffuseMap.SetTypeFilters({".jpg", ".png"});
+  fileDialogDiffuseMap.SetWindowSize(m_viewportWidth * 0.8f,
+                                     m_viewportHeight * 0.8f);
+
+  // File browser for normal maps
+  static ImGui::FileBrowser fileDialogNormalMap;
+  fileDialogNormalMap.SetTitle("Load Normal Map");
+  fileDialogNormalMap.SetTypeFilters({".jpg", ".png"});
+  fileDialogNormalMap.SetWindowSize(m_viewportWidth * 0.8f,
+                                    m_viewportHeight * 0.8f);
+
+// Only in WebGL
+#if defined(__EMSCRIPTEN__)
+  fileDialogModel.SetPwd(getAssetsPath());
+  fileDialogDiffuseMap.SetPwd(getAssetsPath() + "/maps");
+  fileDialogNormalMap.SetPwd(getAssetsPath() + "/maps");
+#endif
 
   const auto size{ImVec2(340, 240)};
   const auto position{ImVec2(5, 5)};
@@ -302,6 +346,36 @@ void OpenGLWindow::paintUI() {
     ImGui::Text("Looking at - X: %f ,Y: %f ,Z: %f ", m_camera.m_at.x,
                 m_camera.m_at.y, m_camera.m_at.z);
     ImGui::End();
+  }
+
+  for (int i = 0; i < 11; i++) {
+    fileDialogModel.Display();
+    if (fileDialogModel.HasSelected()) {
+      astros[i].m_model.loadFromFile(fileDialogModel.GetSelected().string());
+      fileDialogModel.ClearSelected();
+
+      if (astros[i].m_model.isUVMapped()) {
+        // Use mesh texture coordinates if available...
+        m_mappingMode = 3;
+      } else {
+        // ...or triplanar mapping otherwise
+        m_mappingMode = 0;
+      }
+    }
+
+    fileDialogDiffuseMap.Display();
+    if (fileDialogDiffuseMap.HasSelected()) {
+      astros[i].m_model.loadDiffuseTexture(
+          fileDialogDiffuseMap.GetSelected().string());
+      fileDialogDiffuseMap.ClearSelected();
+    }
+
+    fileDialogNormalMap.Display();
+    if (fileDialogNormalMap.HasSelected()) {
+      astros[i].m_model.loadNormalTexture(
+          fileDialogNormalMap.GetSelected().string());
+      fileDialogNormalMap.ClearSelected();
+    }
   }
 }
 
