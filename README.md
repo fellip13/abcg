@@ -53,8 +53,8 @@ https://fellip13.github.io/SolarSystemModelV2/
 
 ### Observação
 Há um bug na simulação que não consegui corrigir antes do final do prazo. O bug acontece quando a camera é movida, mais especificamente, quando os movimentos de Truck e Pedestal são realizados, que levam as texturas do sol e dos planetas a seguirem os movimentos da camera. O bug começou a ocorrer após implementação da função renderSkybox() e se a mesma for comentada fora, o programa volta responder normalmente. Fui instruido pelo professor a entregar a simulação com o Skybox por melhorar a qualidade da simulação no geral e descrever o bug no READ.me/Relatório.
-
 Caso ache necessário, é possivel achar o SolarSystemModel.exe nesse repositório pelo seguinte caminho: abcg → build4 → bin → SolarSystemModelV2 → SolarSystemModelV2.exe
+
 ------
 # Projeto 2 - Computação Gráfica - Sistema Solar
 ## Autores
